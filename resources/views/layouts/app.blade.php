@@ -35,7 +35,7 @@
                 @include('includes.header')
                
                 <div class="content-wrapper">
-
+					
 
                 <div class="row">
 					<div class="col-md-12">

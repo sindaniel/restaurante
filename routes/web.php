@@ -20,6 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::resource('suppliers','SupplierController');
+Route::resource('groups','GroupController');
+
+
+
 
 Route::get('/sign-out', function () {
     Auth::logout();

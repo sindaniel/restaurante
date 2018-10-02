@@ -3,34 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Supplier;
+use App\Group;
 use Session; 
 use Illuminate\Support\Facades\Redirect;
 
 
-class SupplierController extends Controller
+class GroupController extends Controller
 {
     
     public function index(Request $request)
     {
         
-        $suppliers = new Supplier();
+        $groups = new Group();
         $query = $request->get('q');
         if($query){
-            $suppliers = $suppliers->where('name','like','%'.$query.'%')
+            $groups = $groups->where('name','like','%'.$query.'%')
                              ->orWhere('username','like','%'.$query.'%');
         }
 
-        $suppliers = $suppliers->paginate(20);
+        $groups = $groups->paginate(20);
         
         //var_dump(Uuid::generate()->string);
        
         $data = [
-            'suppliers' => $suppliers, 
-            'title' =>'Proveedores',
+            'groups' => $groups, 
+            'title' =>'Grupos',
         ];
 
-        return view('suppliers.index',$data);
+        return view('groups.index',$data);
     }
 
     
@@ -41,7 +41,7 @@ class SupplierController extends Controller
            
         ];
        
-        return view('suppliers.create',$data);
+        return view('groups.create',$data);
     }
 
 
@@ -49,11 +49,11 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
        
-        $supplier = new Supplier;
-        $supplier->create($request->all());
+        $group = new Group;
+        $group->create($request->all());
 
         Session::flash('message', 'Proveedor creado exitosamente');
-        return Redirect::route('suppliers.index');
+        return Redirect::route('groups.index');
     }
 
    
@@ -61,35 +61,35 @@ class SupplierController extends Controller
     
     public function show($id)
     {
-        $supplier = Supplier::find($id);
+        $group = Group::find($id);
 
-        if(!$supplier){
+        if(!$group){
             Session::flash('message','Registro no encontrado');
-            return Redirect::route('suppliers.index');
+            return Redirect::route('groups.index');
         }
            
 
         $data = [
-            'supplier'=> $supplier,
+            'group'=> $group,
         ];
  
-        return view('suppliers.show',$data);
+        return view('groups.show',$data);
     }
 
    
     public function update(Request $request, $id)
     {
-        $supplier = Supplier::find($id);
+        $group = Group::find($id);
 
-        if(!$supplier){
+        if(!$group){
             Session::flash('message','Registro no encontrado');
-            return Redirect::route('suppliers.index');
+            return Redirect::route('groups.index');
         }
            
-        $supplier->update($request->all());
+        $group->update($request->all());
 
         Session::flash('message', 'Proveedor actualizado exitosamente');
-        return Redirect::route('suppliers.index');
+        return Redirect::route('groups.index');
 
     }
 
@@ -98,17 +98,17 @@ class SupplierController extends Controller
     {
         
 
-        $supplier = Supplier::find($id);
+        $group = Group::find($id);
 
-        if(!$supplier){
+        if(!$group){
             Session::flash('message','Registro no encontrado');
-            return Redirect::route('suppliers.index');
+            return Redirect::route('groups.index');
         }
            
-        $supplier->delete();
+        $group->delete();
 
         Session::flash('message', 'Proveedor eliminado exitosamente');
-        return Redirect::route('suppliers.index');
+        return Redirect::route('groups.index');
 
 
     }

@@ -5,19 +5,30 @@
     </nav>
 
     <nav class="navigation" >
-      <ul>
-        {{-- <li class="{{explode('.', Request::route()->getName())[0] == 'home' ? 'active' : ''}}">
-          <a href="{{route('home')}}" title="Dashboard"><span class="nav-icon material-icons">public</span> Dashboard</a>
-        </li> --}}
-        <li class="{{explode('.', Request::route()->getName())[0] == 'accounts' ? 'active' : ''}}">
-          <a  href="" title="Dashboard"><span class="nav-icon material-icons">face</span> Accouts</a>
-        </li> 
-      </ul>
+      	<ul>
+			<li class="{{explode('.', Request::route()->getName())[0] == 'home' ? 'active' : ''}}">
+				<a href="{{route('home')}}" title="Dashboard"><span class="nav-icon material-icons">public</span> Dashboard</a>
+			</li>
+	  	</ul>
+	  
 
-      <div style="position:absolute; bottom:0">
-        <img src=" {{ asset('img/logo.png') }}" alt="Thiply"  class='img-fluid p-5' />
-      </div>
-     
+
+	 	<label title="Products"><span>Productos</span></label>
+	  
+	  	<ul>
+			<li class="{{explode('.', Request::route()->getName())[0] == 'groups' ? 'active' : ''}}">
+				<a  href="{{route('groups.index')}}" title="Dashboard"><span class="nav-icon material-icons">group_work</span> Grupos</a>
+			</li>
+		  </ul>
+		  
+		  
+
+		<ul>
+			<li class="{{explode('.', Request::route()->getName())[0] == 'suppliers' ? 'active' : ''}}">
+				<a  href="{{route('suppliers.index')}}" title="Dashboard"><span class="nav-icon material-icons">local_shipping</span> Proveedores</a>
+			</li> 
+		</ul>
+
 
     </nav>
 
