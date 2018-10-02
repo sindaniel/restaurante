@@ -37,11 +37,7 @@ class GroupController extends Controller
     public function create(Request $request)
     {
 
-        $data = [ 
-           
-        ];
-       
-        return view('groups.create',$data);
+        return view('groups.create');
     }
 
 
@@ -52,7 +48,7 @@ class GroupController extends Controller
         $group = new Group;
         $group->create($request->all());
 
-        Session::flash('message', 'Proveedor creado exitosamente');
+        Session::flash('message', 'Gropo creado exitosamente');
         return Redirect::route('groups.index');
     }
 

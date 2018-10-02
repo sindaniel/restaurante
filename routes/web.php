@@ -22,6 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('suppliers','SupplierController');
 Route::resource('groups','GroupController');
+Route::resource('units','UnitController');
+Route::resource('products','ProductController');
 
 
 

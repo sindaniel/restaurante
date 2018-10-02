@@ -16,9 +16,19 @@
 	 	<label title="Products"><span>Productos</span></label>
 	  
 	  	<ul>
-			<li class="{{explode('.', Request::route()->getName())[0] == 'groups' ? 'active' : ''}}">
-				<a  href="{{route('groups.index')}}" title="Dashboard"><span class="nav-icon material-icons">group_work</span> Grupos</a>
-			</li>
+
+				<li class="{{explode('.', Request::route()->getName())[0] == 'products' ? 'active' : ''}}">
+					<a  href="{{route('products.index')}}" title="Dashboard"><span class="nav-icon material-icons">dehaze</span> Productos</a>
+				</li>
+
+				<li class="{{explode('.', Request::route()->getName())[0] == 'groups' ? 'active' : ''}}">
+					<a  href="{{route('groups.index')}}" title="Dashboard"><span class="nav-icon material-icons">group_work</span> Grupos</a>
+				</li>
+				<li class="{{explode('.', Request::route()->getName())[0] == 'units' ? 'active' : ''}}">
+					<a  href="{{route('units.index')}}" title="Dashboard"><span class="nav-icon material-icons">filter_tilt_shift</span> Unidades</a>
+				</li>
+
+				
 		  </ul>
 		  
 		  

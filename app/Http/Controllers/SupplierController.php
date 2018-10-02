@@ -17,8 +17,7 @@ class SupplierController extends Controller
         $suppliers = new Supplier();
         $query = $request->get('q');
         if($query){
-            $suppliers = $suppliers->where('name','like','%'.$query.'%')
-                             ->orWhere('username','like','%'.$query.'%');
+            $suppliers = $suppliers->where('name','like','%'.$query.'%');
         }
 
         $suppliers = $suppliers->paginate(20);
