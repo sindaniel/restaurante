@@ -39,7 +39,7 @@ class ProductController extends Controller
     }
 
     
-    public function create(ProductRequestForm $request)
+    public function create()
     {
 
         $suppliers = Supplier::all()->pluck('name', 'id');

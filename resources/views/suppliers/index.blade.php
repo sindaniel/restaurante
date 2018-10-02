@@ -62,7 +62,9 @@
                         </td>
 
                         <td class='align-middle'>
-                            <a href='{{route('suppliers.show', [$supplier->id])}}' class='btn text-white btn-primary'><i class="fas fa-edit"></i> Editar</a>
+                            <a href='{{route('suppliers.edit', [$supplier->id])}}' class='btn text-white btn-primary'><i class="fas fa-edit"></i> Editar</a>
+
+                            <a href='{{route('suppliers.show', [$supplier->id])}}' class='btn text-white btn-info'><i class="fas fa-edit"></i> Productos</a>
                          
 
                             <form class='d-inline-block'  action="{{ route('suppliers.destroy',$supplier->id) }}" method="POST">

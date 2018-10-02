@@ -10,6 +10,7 @@ use App\Http\Requests\SupplierRequestForm;
 
 
 use App\Supplier;
+use App\Product;
 
 class SupplierController extends Controller
 {
@@ -59,8 +60,6 @@ class SupplierController extends Controller
     }
 
    
-   
-    
     public function show($id)
     {
         $supplier = Supplier::find($id);
@@ -70,12 +69,33 @@ class SupplierController extends Controller
             return Redirect::route('suppliers.index');
         }
            
+        $products = Product::where('supplier_id', $supplier->id)->get();
 
+        $data = [
+            'supplier'=> $supplier,
+            'products'=> $products,
+        ];
+ 
+        return view('suppliers.show',$data);
+    }
+
+
+   
+    
+    public function edit($id)
+    {
+        $supplier = Supplier::find($id);
+
+        if(!$supplier){
+            Session::flash('message','Registro no encontrado');
+            return Redirect::route('suppliers.index');
+        }
+           
         $data = [
             'supplier'=> $supplier,
         ];
  
-        return view('suppliers.show',$data);
+        return view('suppliers.edit',$data);
     }
 
    
