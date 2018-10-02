@@ -131,26 +131,32 @@
 
                 <tr>
                     <th class="text-right" colspan="6">Total Costo</th> 
-                    <th>$ {{number_format($totalCost + (($totalCost * ($recipe->error_range/100))), 2)}}</th>
+                    @php 
+                        $price = $totalCost + ($totalCost * ($recipe->error_range/100)) 
+                    @endphp
+                    <th>$ {{number_format( $price, 2)}}</th>
                     <th></th>
                 </tr>
 
 
                 <tr>
                     <th class="text-right" colspan="6">PRECIO DE VENTA ANTES DE INC</th> 
-                    <th>$ {{ ($recipe->price/$recipe->tax)*100}}</th>
+                    @php 
+                    $price = $price/$recipe->portions
+                     @endphp
+                    <th>$ {{ number_format(($price/$recipe->tax)*100, 2)}}</th>
                     <th></th>
                 </tr>
 
 
                 <tr>
-                        <th class="text-right" colspan="6">PRECIO DE VENTA ANTES DE INC</th> 
-                        <th>$ {{round( ($recipe->price/$recipe->tax)*100, -2)}}</th>
-                        <th></th>
-                    </tr>
+                    <th class="text-right" colspan="6">PRECIO DE VENTA ANTES DE INC</th> 
+                    <th>$ {{round( ($price/$recipe->tax)*100, -2)}}</th>
+                    <th></th>
+                </tr>
 
 
-                   
+
 
 
                 

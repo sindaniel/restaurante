@@ -28,7 +28,7 @@
 
                     @include('helpers.forms.input',  ['key'=>'portions', 'title' => "Porciones", 'subtitle' => "Numero de porciones", 'item'=>false])
 
-                    @include('helpers.forms.input',  ['key'=>'price', 'title' => "Precio porcion", 'subtitle' => "Precio por porcion", 'item'=>false])
+         
 
                     @include('helpers.forms.input',  ['key'=>'tax', 'title' => "Incremento", 'subtitle' => "Incremento", 'item'=>false])
 

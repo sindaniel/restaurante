@@ -37,7 +37,7 @@
 
                     @include('helpers.forms.input',  ['key'=>'portions', 'title' => "Porciones", 'subtitle' => "Numero de porciones", 'item'=>$recipe->portions])
 
-                    @include('helpers.forms.input',  ['key'=>'price', 'title' => "Precio porcion", 'subtitle' => "Precio por porcion", 'item'=>$recipe->price])
+
 
                     @include('helpers.forms.input',  ['key'=>'tax', 'title' => "Incremento", 'subtitle' => "Incremento", 'item'=>$recipe->tax])
 

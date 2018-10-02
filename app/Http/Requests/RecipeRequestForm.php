@@ -28,7 +28,7 @@ class RecipeRequestForm extends FormRequest
             'portions' => 'required',
             'error_range' => 'required',
             'tax' => 'required',
-            'price' => 'required',
+        
         ];
     }
 
