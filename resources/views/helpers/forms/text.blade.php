@@ -7,10 +7,10 @@
     </div>
     
     <div class="col-sm-9">
-        {!! Form::select($key,
-            $options,
-            null,
+        {!! Form::textarea($key,
+            old($key), 
             [
+            'placeholder'=> $title,
             'class' => 'form-control '. ($errors->has($key) ? 'is-invalid' : '' ), 
             'id' => $key
         ])
@@ -33,9 +33,8 @@
         </div>
         
         <div class="col-sm-9">
-            {!! Form::select($key,
-                $options,
-                $item,
+            {!! Form::textarea($key,
+                old($key, $item), 
                 [
                 'placeholder'=> $title,
                 'class' => 'form-control '. ($errors->has($key) ? 'is-invalid' : '' ), 

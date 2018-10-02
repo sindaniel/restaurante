@@ -71,3 +71,40 @@ Breadcrumbs::for('products.forms', function ($trail, $text) {
 
 
 
+// Home > Recetas
+Breadcrumbs::for('recipes', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Recetas', route('recipes.index'));
+});
+
+
+// Home > Recetas > Forms
+Breadcrumbs::for('recipes.forms', function ($trail, $text) {
+    $trail->parent('recipes');
+    $trail->push($text);
+});
+
+
+
+
+// Home > Recetas > Productos
+Breadcrumbs::for('recipes.products', function ($trail, $recipe) {
+    $trail->parent('recipes');
+    $trail->push($recipe->name, route('recipes.products.index', $recipe->id));
+});
+
+
+
+
+// Home > Recetas > Productos > form
+Breadcrumbs::for('recipes.products.form', function ($trail, $recipe, $text) {
+    $trail->parent('recipes.products', $recipe);
+    $trail->push($text);
+});
+
+
+
+
+
+
+

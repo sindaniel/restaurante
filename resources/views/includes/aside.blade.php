@@ -9,9 +9,18 @@
 			<li class="{{explode('.', Request::route()->getName())[0] == 'home' ? 'active' : ''}}">
 				<a href="{{route('home')}}" title="Dashboard"><span class="nav-icon material-icons">public</span> Dashboard</a>
 			</li>
-	  	</ul>
-	  
 
+
+			<li class="{{explode('.', Request::route()->getName())[0] == 'recipes' ? 'active' : ''}}">
+				<a  href="{{route('recipes.index')}}" title="Dashboard"><span class="nav-icon material-icons">comment</span> Recetas</a>
+			</li>
+
+				
+				
+	  	</ul>
+		
+			
+		
 
 	 	<label title="Products"><span>Productos</span></label>
 	  
@@ -28,16 +37,18 @@
 					<a  href="{{route('units.index')}}" title="Dashboard"><span class="nav-icon material-icons">filter_tilt_shift</span> Unidades</a>
 				</li>
 
+				<ul>
+					<li class="{{explode('.', Request::route()->getName())[0] == 'suppliers' ? 'active' : ''}}">
+						<a  href="{{route('suppliers.index')}}" title="Dashboard"><span class="nav-icon material-icons">local_shipping</span> Proveedores</a>
+					</li> 
+				</ul>
+
 				
 		  </ul>
-		  
-		  
+		 
 
-		<ul>
-			<li class="{{explode('.', Request::route()->getName())[0] == 'suppliers' ? 'active' : ''}}">
-				<a  href="{{route('suppliers.index')}}" title="Dashboard"><span class="nav-icon material-icons">local_shipping</span> Proveedores</a>
-			</li> 
-		</ul>
+
+	
 
 
     </nav>

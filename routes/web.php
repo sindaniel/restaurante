@@ -26,6 +26,10 @@ Route::resource('units','UnitController');
 Route::resource('products','ProductController');
 
 
+Route::resource('recipes','RecipeController');
+Route::resource('recipes.products', 'ProductRecipeController');
+
+
 
 
 Route::get('/sign-out', function () {

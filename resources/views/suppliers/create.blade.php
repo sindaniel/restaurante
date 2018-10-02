@@ -62,13 +62,3 @@
 
 
 
-@section('scripts')
-
-<script>
-    $( "#leaderboard-btn" ).click(function() {
-        $( "#leaderboard-options" ).toggle();
-    });
-</script>
-@stop
-
-

@@ -10,6 +10,6 @@ class Unit extends Model
 {   
     use SoftDeletes;
     
-    protected $fillable = ['name', 'consumption'];
+    protected $fillable = ['name', 'consumption', 'factor'];
     protected $dates = ['deleted_at'];
 }

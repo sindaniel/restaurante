@@ -2,7 +2,7 @@
 @if(!$item)
 <div class="form-group row mt-5">
     <div class="col-sm-3">
-        <label for="address" class='mb-0' >{{$title}}</label>
+        <label for="{{$key}}" class='mb-0' >{{$title}}</label>
         <span class='text-muted d-block'>{{$subtitle}}</span>
     </div>
     
@@ -28,7 +28,7 @@
 
 <div class="form-group row mt-5">
         <div class="col-sm-3">
-            <label for="address" class='mb-0' >{{$title}}</label>
+            <label for="{{$key}}" class='mb-0' >{{$title}}</label>
             <span class='text-muted d-block'>{{$subtitle}}</span>
         </div>
         

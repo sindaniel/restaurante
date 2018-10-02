@@ -2,55 +2,45 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
-use App\Product;
+use Session; 
+
+use App\Recipe;
 use App\Unit;
 use App\Supplier;
 use App\Group;
-use Session; 
-use Illuminate\Support\Facades\Redirect;
 
 
-class ProductController extends Controller
+
+
+class RecipeController extends Controller
 {
     
     public function index(Request $request)
     {
         
-        $products = new Product();
+        $recipes = new Recipe();
         $query = $request->get('q');
         if($query){
-            $products = $products->where('name','like','%'.$query.'%')
-                             ->orWhere('code','like','%'.$query.'%');
+            $recipes = $recipes->where('name','like','%'.$query.'%');
         }
 
-        $products = $products->paginate(20);
+        $recipes = $recipes->paginate(20);
                
         $data = [
-            'products' => $products, 
+            'recipes' => $recipes, 
             'title' =>'Grupos',
         ];
 
-        return view('products.index',$data);
+        return view('recipes.index',$data);
     }
 
     
     public function create(Request $request)
     {
-
-        $suppliers = Supplier::all()->pluck('name', 'id');
-        $units = Unit::all()->pluck('name', 'id');
-        $groups = Group::all()->pluck('name', 'id');
-
-
-        $data = [
-            'suppliers' => $suppliers,
-            'units' => $units,
-            'groups' => $groups,
-        ];
-
-
-        return view('products.create', $data);
+        return view('recipes.create');
     }
 
 
@@ -58,11 +48,11 @@ class ProductController extends Controller
     public function store(Request $request)
     {
        
-        $product = new Product;
-        $product->create($request->all());
+        $recipe = new Recipe;
+        $recipe->create($request->all());
 
-        Session::flash('message', 'Producto creado exitosamente');
-        return Redirect::route('products.index');
+        Session::flash('message', 'Receta creada exitosamente');
+        return Redirect::route('recipes.index');
     }
 
    
@@ -70,43 +60,59 @@ class ProductController extends Controller
     
     public function show($id)
     {
-        $product = Product::find($id);
+        $recipe = Recipe::find($id);
 
-        if(!$product){
+        if(!$recipe){
             Session::flash('message','Registro no encontrado');
-            return Redirect::route('products.index');
+            return Redirect::route('recipes.index');
         }
         
 
-        $suppliers = Supplier::all()->pluck('name', 'id');
-        $units = Unit::all()->pluck('name', 'id');
-        $groups = Group::all()->pluck('name', 'id');
 
         $data = [
-            'product'=> $product,
-            'suppliers' => $suppliers,
-            'units' => $units,
-            'groups' => $groups,
+            'recipe'=> $recipe,
         ];
 
  
-        return view('products.show',$data);
+        return view('recipes.show',$data);
     }
+
+
+    public function edit($id)
+    {
+        $recipe = Recipe::find($id);
+
+        if(!$recipe){
+            Session::flash('message','Registro no encontrado');
+            return Redirect::route('recipes.index');
+        }
+        
+
+
+        $data = [
+            'recipe'=> $recipe,
+        ];
+
+ 
+        return view('recipes.edit',$data);
+    }
+
+
 
    
     public function update(Request $request, $id)
     {
-        $product = Product::find($id);
+        $recipe = Recipe::find($id);
 
-        if(!$product){
+        if(!$recipe){
             Session::flash('message','Registro no encontrado');
-            return Redirect::route('products.index');
+            return Redirect::route('recipes.index');
         }
            
-        $product->update($request->all());
+        $recipe->update($request->all());
 
-        Session::flash('message', 'Producto actualizado exitosamente');
-        return Redirect::route('products.index');
+        Session::flash('message', 'Receta actualizada exitosamente');
+        return Redirect::route('recipes.index');
 
     }
 
@@ -115,17 +121,17 @@ class ProductController extends Controller
     {
         
 
-        $product = Product::find($id);
+        $recipe = Recipe::find($id);
 
-        if(!$product){
+        if(!$recipe){
             Session::flash('message','Registro no encontrado');
-            return Redirect::route('products.index');
+            return Redirect::route('recipes.index');
         }
            
-        $product->delete();
+        $recipe->delete();
 
-        Session::flash('message', 'Producto eliminado exitosamente');
-        return Redirect::route('products.index');
+        Session::flash('message', 'Receta eliminada exitosamente');
+        return Redirect::route('recipes.index');
 
 
     }
