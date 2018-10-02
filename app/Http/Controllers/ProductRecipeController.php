@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
+
+use App\Http\Requests\ProductRecipeRequestForm;
+
 use Session; 
 use App\Recipe;
 use App\Product;
 use App\ProductRecipe;
+
+
 
 
 
@@ -61,7 +66,7 @@ class ProductRecipeController extends Controller
     }
 
 
-    public function store(Request $request, $recipe_id)
+    public function store(ProductRecipeRequestForm $request, $recipe_id)
     {
        
         $productRecipe = new ProductRecipe;

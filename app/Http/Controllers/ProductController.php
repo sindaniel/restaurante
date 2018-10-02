@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequestForm;
 use App\Product;
 use App\Unit;
 use App\Supplier;
 use App\Group;
 use Session; 
-use Illuminate\Support\Facades\Redirect;
+
+
 
 
 class ProductController extends Controller
@@ -35,7 +39,7 @@ class ProductController extends Controller
     }
 
     
-    public function create(Request $request)
+    public function create(ProductRequestForm $request)
     {
 
         $suppliers = Supplier::all()->pluck('name', 'id');
@@ -94,7 +98,7 @@ class ProductController extends Controller
     }
 
    
-    public function update(Request $request, $id)
+    public function update(ProductRequestForm $request, $id)
     {
         $product = Product::find($id);
 

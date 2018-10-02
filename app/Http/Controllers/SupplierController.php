@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Supplier;
+
 use Session; 
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\SupplierRequestForm;
 
+
+use App\Supplier;
 
 class SupplierController extends Controller
 {
@@ -33,7 +36,7 @@ class SupplierController extends Controller
     }
 
     
-    public function create(Request $request)
+    public function create()
     {
 
         $data = [ 
@@ -45,7 +48,7 @@ class SupplierController extends Controller
 
 
    
-    public function store(Request $request)
+    public function store(SupplierRequestForm $request)
     {
        
         $supplier = new Supplier;
@@ -76,7 +79,7 @@ class SupplierController extends Controller
     }
 
    
-    public function update(Request $request, $id)
+    public function update(SupplierRequestForm $request, $id)
     {
         $supplier = Supplier::find($id);
 

@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Session; 
 
+use App\Http\Requests\RecipeRequestForm;
+
+
 use App\Recipe;
 use App\Unit;
 use App\Supplier;
@@ -45,7 +48,7 @@ class RecipeController extends Controller
 
 
    
-    public function store(Request $request)
+    public function store(RecipeRequestForm $request)
     {
        
         $recipe = new Recipe;
@@ -100,7 +103,7 @@ class RecipeController extends Controller
 
 
    
-    public function update(Request $request, $id)
+    public function update(RecipeRequestForm $request, $id)
     {
         $recipe = Recipe::find($id);
 

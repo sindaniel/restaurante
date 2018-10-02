@@ -39,6 +39,8 @@
 
                     @include('helpers.forms.input',  ['key'=>'price', 'title' => "Precio porcion", 'subtitle' => "Precio por porcion", 'item'=>$recipe->price])
 
+                    @include('helpers.forms.input',  ['key'=>'tax', 'title' => "Incremento", 'subtitle' => "Incremento", 'item'=>$recipe->tax])
+
                     @include('helpers.forms.input',  ['key'=>'error_range', 'title' => "Margen de error", 'subtitle' => "Porcentaje del margen de error", 'item'=>$recipe->error_range])
 
                     @include('helpers.forms.text',  ['key'=>'instructions', 'title' => "Instrucciones", 'subtitle' => "Instrucciones de la receta", 'item'=>$recipe->instructions])

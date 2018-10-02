@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Group;
+
 use Session; 
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\GroupRequestForm;
 
+use App\Group;
 
 class GroupController extends Controller
 {
@@ -17,8 +19,7 @@ class GroupController extends Controller
         $groups = new Group();
         $query = $request->get('q');
         if($query){
-            $groups = $groups->where('name','like','%'.$query.'%')
-                             ->orWhere('username','like','%'.$query.'%');
+            $groups = $groups->where('name','like','%'.$query.'%');
         }
 
         $groups = $groups->paginate(20);
@@ -34,7 +35,7 @@ class GroupController extends Controller
     }
 
     
-    public function create(Request $request)
+    public function create()
     {
 
         return view('groups.create');
@@ -42,13 +43,13 @@ class GroupController extends Controller
 
 
    
-    public function store(Request $request)
+    public function store(GroupRequestForm $request)
     {
        
         $group = new Group;
         $group->create($request->all());
 
-        Session::flash('message', 'Gropo creado exitosamente');
+        Session::flash('message', 'Grupo creado exitosamente');
         return Redirect::route('groups.index');
     }
 
@@ -73,7 +74,7 @@ class GroupController extends Controller
     }
 
    
-    public function update(Request $request, $id)
+    public function update(GroupRequestForm $request, $id)
     {
         $group = Group::find($id);
 
@@ -84,7 +85,7 @@ class GroupController extends Controller
            
         $group->update($request->all());
 
-        Session::flash('message', 'Proveedor actualizado exitosamente');
+        Session::flash('message', 'Gruopo actualizado exitosamente');
         return Redirect::route('groups.index');
 
     }

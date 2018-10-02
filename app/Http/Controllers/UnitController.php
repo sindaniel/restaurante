@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Unit;
+
 use Session; 
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\UnitRequestForm;
 
+use App\Unit;
 
 class UnitController extends Controller
 {
@@ -42,7 +44,7 @@ class UnitController extends Controller
 
 
    
-    public function store(Request $request)
+    public function store(UnitRequestForm $request)
     {
        
         $unit = new Unit;
@@ -74,7 +76,7 @@ class UnitController extends Controller
     }
 
    
-    public function update(Request $request, $id)
+    public function update(UnitRequestForm $request, $id)
     {
         $unit = Unit::find($id);
 

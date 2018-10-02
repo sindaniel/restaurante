@@ -30,6 +30,8 @@
 
                     @include('helpers.forms.input',  ['key'=>'price', 'title' => "Precio porcion", 'subtitle' => "Precio por porcion", 'item'=>false])
 
+                    @include('helpers.forms.input',  ['key'=>'tax', 'title' => "Incremento", 'subtitle' => "Incremento", 'item'=>false])
+
                     @include('helpers.forms.input',  ['key'=>'error_range', 'title' => "Margen de error", 'subtitle' => "Porcentaje del margen de error", 'item'=>false])
 
                     @include('helpers.forms.text',  ['key'=>'instructions', 'title' => "Instrucciones", 'subtitle' => "Instrucciones de la receta", 'item'=>false])
@@ -37,7 +39,7 @@
                 
                     
                     <button class='btn text-white btn-success'>Guardar</button>
-                    <a href="{{route('products.index')}}" class='btn btn-danger'>Cancelar</a>
+                    <a href="{{route('recipes.index')}}" class='btn btn-danger'>Cancelar</a>
                 {{ Form::close() }}
             </div>
         </div>
